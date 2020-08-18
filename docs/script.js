@@ -22,7 +22,6 @@ function generatePassword() {
   var password = "";
   for (var i = 0; i < characterCount; i++) {
     var character = totalCharacters[Math.floor(Math.random() * totalCharacters.length)];
-    console.log(character);
     password += character; 
   };
   totalCharacters = [];
@@ -30,7 +29,8 @@ function generatePassword() {
     // password = password + character
   //do a loop that executes characterCount # of times. each time through pick a random character the append to empty password variable. 
 
-}
+};
+
 
 function confirmCriteria () {
   confirmUppercase = confirm("May we use UPPERCASE characters in your new password? Select OK if we can, Cancel if not.");
