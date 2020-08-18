@@ -9,18 +9,27 @@ var upperCasedCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K
 var totalCharacters = [];
 
 // confirmation vairables for usage of different characters
-  var confirmUppercase = false;
-  var confirmLowercase = false;
-  var confirmNumbers = false;
-  var confirmSpecial = false;
-  var characterCount = false;
+var confirmUppercase;
+var confirmLowercase;
+var confirmNumbers;
+var confirmSpecial;
+var characterCount;
   
-
 
 function generatePassword() {
   confirmCriteria();
   createFinalArray();
-  return totalCharacters[Math.floor(Math.random() * characterCount)];
+  var password = "";
+  for (var i = 0; i < characterCount; i++) {
+    var character = totalCharacters[Math.floor(Math.random() * totalCharacters.length)];
+    console.log(character);
+    password += character; 
+  };
+  totalCharacters = [];
+  return password;
+    // password = password + character
+  //do a loop that executes characterCount # of times. each time through pick a random character the append to empty password variable. 
+
 }
 
 function confirmCriteria () {
@@ -29,7 +38,7 @@ function confirmCriteria () {
   confirmNumbers = confirm("May we use numbers like 1 or 4 in your new password? Select OK if we can, Cancel if not.");
   confirmSpecial = confirm("May we use special characters like $ or % in your new password? Select OK if we can, Cancel if not.");
   characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
-  if (characterCount < 8 && characterCount > 128) { 
+  if (characterCount < 8 || characterCount > 128) { 
     alert("Remember, choose a number between 8 & 128.");
     characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
     };
@@ -58,8 +67,9 @@ function createFinalArray() {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  var passwordText = document.querySelector("#generate");
-  passwordText.value = password;
+  console.log(password);
+  var passwordText = document.querySelector("#password");
+  passwordText.textContent = password;
 };
 
 // Add event listener to generate button
