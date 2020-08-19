@@ -17,37 +17,40 @@ var characterCount;
   
 
 function generatePassword() {
-  confirmCriteria();
+  confirmCharacters();
+  confrimCount();
   createFinalArray();
   var password = "";
   for (var i = 0; i < characterCount; i++) {
     var character = totalCharacters[Math.floor(Math.random() * totalCharacters.length)];
     password += character; 
+    // Math.floor rounds the value of Math.Random*X down
+    // Math.random() generates a random decimal between 0 and 1, which you multiply by the number of characters you're sorting throuh and round down so you never exceed the number of characters. 
   };
   totalCharacters = [];
   return password;
-    // password = password + character
-  //do a loop that executes characterCount # of times. each time through pick a random character the append to empty password variable. 
-
 };
 
-
-function confirmCriteria () {
+function confirmCharacters () {
   confirmUppercase = confirm("May we use UPPERCASE characters in your new password? Select OK if we can, Cancel if not.");
   confirmLowercase = confirm("May we use lowercase characters in your new password? Select OK if we can, Cancel if not.");
   confirmNumbers = confirm("May we use numbers like 1 or 4 in your new password? Select OK if we can, Cancel if not.");
   confirmSpecial = confirm("May we use special characters like $ or % in your new password? Select OK if we can, Cancel if not.");
+  if (confirmLowercase === false && confirmUppercase === false && confirmSpecial === false && confirmNumbers === false) {
+    alert("You must choose to include at least one of Uppercase, Lowercase, Special, and Numerical Characters.")
+    confirmCharacters();
+    };
+};
+
+
+function confrimCount () {
   characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
+  
   if (characterCount < 8 || characterCount > 128) { 
     alert("Remember, choose a number between 8 & 128.");
     characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
     };
-  if (confirmLowercase === "false" && confirmUppercase === "false" && confirmSpecial === "false" && confirmNumbers === "false") {
-    alert("You must choose to include at least one of Uppercase, Lowercase, Special, and Numerical Characters.")
-    confirmCriteria();
-  };
-}; 
-
+};   
 
 function createFinalArray() {
   if (confirmUppercase) {
@@ -67,7 +70,6 @@ function createFinalArray() {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
-  console.log(password);
   var passwordText = document.querySelector("#password");
   passwordText.textContent = password;
 };
