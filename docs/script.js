@@ -18,7 +18,7 @@ var characterCount;
 
 function generatePassword() {
   confirmCharacters();
-  confrimCount();
+  confirmCount();
   createFinalArray();
   var password = "";
   for (var i = 0; i < characterCount; i++) {
@@ -36,36 +36,37 @@ function confirmCharacters () {
   confirmLowercase = confirm("May we use lowercase characters in your new password? Select OK if we can, Cancel if not.");
   confirmNumbers = confirm("May we use numbers like 1 or 4 in your new password? Select OK if we can, Cancel if not.");
   confirmSpecial = confirm("May we use special characters like $ or % in your new password? Select OK if we can, Cancel if not.");
-  if (confirmLowercase === false && confirmUppercase === false && confirmSpecial === false && confirmNumbers === false) {
+  if (!confirmLowercase && !confirmUppercase && !confirmSpecial && !confirmNumbers) {
     alert("You must choose to include at least one of Uppercase, Lowercase, Special, and Numerical Characters.")
     confirmCharacters();
     };
 };
 
 
-function confrimCount () {
+function confirmCount () {
   characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
-  
   if (characterCount < 8 || characterCount > 128) { 
     alert("Remember, choose a number between 8 & 128.");
-    characterCount = prompt("How many characters do you want in your password? 8 is the minimum and 128 is the maximum. And the sky is the limit.");
+    confirmCount();
     };
 };   
 
 function createFinalArray() {
   if (confirmUppercase) {
-    Array.prototype.push.apply(totalCharacters, upperCasedCharacters);
+    totalCharacters.push(upperCasedCharacters)
   };
   if (confirmLowercase) {
-    Array.prototype.push.apply(totalCharacters, lowerCasedCharacters);
+    totalCharacters.push(lowerCasedCharacters)
   };
   if (confirmNumbers) {
-    Array.prototype.push.apply(totalCharacters, numericCharacters);
+    totalCharacters.push(numericCharacters)
   };
   if (confirmSpecial) {
-    Array.prototype.push.apply(totalCharacters, specialCharacters);
+    totalCharacters.push(specialCharacters)
   };
+  totalCharacters = totalCharacters.flat();
 };
+
 
 // Write password to the #password input
 function writePassword() {
@@ -76,6 +77,7 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
 
 
 
@@ -94,3 +96,21 @@ generateBtn.addEventListener("click", writePassword);
 
 // 8. Randomly generate a string of characters based on criteria above. 
     // use an array to get random characters?
+
+// ----------------------
+
+
+// function createFinalArray() {
+//   if (confirmUppercase) {
+//     Array.prototype.push.apply(totalCharacters, upperCasedCharacters);
+//   };
+//   if (confirmLowercase) {
+//     Array.prototype.push.apply(totalCharacters, lowerCasedCharacters);
+//   };
+//   if (confirmNumbers) {
+//     Array.prototype.push.apply(totalCharacters, numericCharacters);
+//   };
+//   if (confirmSpecial) {
+//     Array.prototype.push.apply(totalCharacters, specialCharacters);
+//   };
+// };
