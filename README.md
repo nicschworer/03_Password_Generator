@@ -2,6 +2,9 @@
 
 The goal of this assignment is to start with the shell of this password generator website and to code the js so that it takes in several pieces of criteria from the user and based on that criteria, creates a random password. 
 
+
+LINK TO DEPLOYED:
+
 The criteria being: 
  - do you want uppercase letters? 
  - do you want lowercase letters? 
@@ -24,4 +27,5 @@ Lastly, I debugged the provided writePassword function which calls my generatePa
 FIN
 
 The biggest challenge for me was understanding the code that was provided (first time I had seen queryselector) and then thinking through scoping of variables. I moved variables in and out of functions over and over trying to get everything to work, but I finally thing I have a good sense of how to scope and write variables/functions. 
+
 
