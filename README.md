@@ -3,7 +3,7 @@
 The goal of this assignment is to start with the shell of this password generator website and to code the js so that it takes in several pieces of criteria from the user and based on that criteria, creates a random password. 
 
 
-LINK TO DEPLOYED:
+LINK TO DEPLOYED: https://nicschworer.github.io/03_Password_Generator/
 
 The criteria being: 
  - do you want uppercase letters? 
